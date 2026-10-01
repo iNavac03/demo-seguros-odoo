@@ -1,0 +1,29 @@
+<t t-name="website_studio.certificados-1">
+  <t t-call="website.layout">
+    <div id="o_website_record_page wrap">
+      <div class="oe_structure oe_empty oe_new" data-editor-message.translate="Arrastra los bloques de creación para personalizar el encabezado de los registros de una sola página"/>
+      <div class="container">
+        <ol t-if="listing" class="breadcrumb p-0 my-2">
+          <li class="breadcrumb-item o_not_editable">
+            <a t-att-href="listing['href']">
+              <span t-out="listing['name']"/>
+            </a>
+          </li>
+          <li class="breadcrumb-item active">
+            <span t-field="record.x_name"/>
+          </li>
+        </ol>
+        <div class="d-flex flex-row my-4 flex-wrap align-items-center justify-content-between">
+          <div class="col-lg-4 mt-lg-4 col-sm-12">
+            <h1 class="h1">
+              <span t-field="record.x_name"/>
+            </h1>
+            <span class="o_website_monetary" t-field="record.x_studio_value"/>
+          </div>
+        </div>
+        <div class="o_website_html" t-field="record.x_studio_website_description" data-editor-message="Arrastra los bloques de creación para editar la descripción del sitio web de este registro."/>
+      </div>
+      <div class="oe_structure oe_empty oe_new" data-editor-message.translate="Arrastra los bloques de creación para personalizar el pie de página de los registros de una sola página"/>
+    </div>
+  </t>
+</t>

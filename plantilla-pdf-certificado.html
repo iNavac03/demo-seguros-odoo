@@ -1,0 +1,67 @@
+<t t-name="studio_report_document" lock-id="0">
+  <t t-call="web.external_layout" lock-id="4">
+    <div class="page">
+      <t t-set="url_verif" t-value="'%s/model/verificar/%s-%s' % (doc.get_base_url(), (doc.x_name or '').lower(), doc.id)"/>
+
+      <div class="text-center mb-4">
+        <h3 class="mb-1">CERTIFICADO INDIVIDUAL DE ASEGURAMIENTO</h3>
+        <h4 class="text-muted mb-0"><span t-field="doc.x_name"/></h4>
+      </div>
+
+      <div class="row">
+        <div class="col-8">
+          <table class="table table-sm table-borderless">
+            <tr>
+              <td class="text-muted" style="width: 38%;">Asegurado</td>
+              <td><strong t-field="doc.x_studio_partner_id"/></td>
+            </tr>
+            <tr>
+              <td class="text-muted">RFC</td>
+              <td><span t-out="doc.x_studio_partner_id.vat or ''"/></td>
+            </tr>
+            <tr>
+              <td class="text-muted">CURP</td>
+              <td><span t-out="doc.x_studio_partner_id.x_studio_curp or ''"/></td>
+            </tr>
+            <tr>
+              <td class="text-muted">Convenio</td>
+              <td><span t-field="doc.x_studio_convenio"/></td>
+            </tr>
+            <tr>
+              <td class="text-muted">Producto</td>
+              <td><span t-field="doc.x_studio_producto_contratado"/></td>
+            </tr>
+            <tr>
+              <td class="text-muted">Aseguradora</td>
+              <td><span t-field="doc.x_studio_aseguradora"/></td>
+            </tr>
+            <tr>
+              <td class="text-muted">Suma asegurada</td>
+              <td><strong t-field="doc.x_studio_value"/></td>
+            </tr>
+            <tr>
+              <td class="text-muted">Vigencia</td>
+              <td><span t-field="doc.x_studio_vigencia_inicio"/> – <span t-field="doc.x_studio_vigencia_fin"/></td>
+            </tr>
+            <tr>
+              <td class="text-muted">Estatus</td>
+              <td><span t-field="doc.x_studio_estatus"/></td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="col-4 text-center">
+          <img t-att-src="'/report/barcode/?barcode_type=QR&amp;value=%s&amp;width=200&amp;height=200' % url_verif"
+               style="width: 150px; height: 150px;"/>
+          <p class="small text-muted mt-2">
+            Escanee este código para verificar la autenticidad y vigencia del certificado.
+          </p>
+        </div>
+      </div>
+
+      <p class="small text-muted text-center mt-5">
+        Documento generado electrónicamente por SAFE Seguros.
+      </p>
+    </div>
+  </t>
+</t>

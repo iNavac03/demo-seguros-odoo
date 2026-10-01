@@ -1,0 +1,56 @@
+<t t-name="website_studio.certificados-1">
+  <t t-call="website.layout">
+    <t t-set="estatus" t-value="(record.x_studio_estatus or '').lower()"/>
+    <t t-set="color" t-value="'bg-success text-white' if estatus == 'vigente' else ('bg-danger text-white' if estatus == 'inactivo' else ('bg-warning text-dark' if estatus == 'pendiente' else 'bg-secondary text-white'))"/>
+    <div id="wrap">
+      <div class="container py-5" style="max-width: 720px;">
+
+        <div class="text-center mb-4">
+          <p class="text-uppercase text-muted small mb-1">SAFE Seguros</p>
+          <h1 class="h3 mb-0">Verificación de certificado</h1>
+        </div>
+
+        <div class="card shadow-sm">
+          <div t-attf-class="card-header text-center py-4 #{color}">
+            <div class="small text-uppercase">Certificado</div>
+            <div class="h4 mb-2"><span t-field="record.x_name"/></div>
+            <div class="display-6 fw-bold text-uppercase"><span t-field="record.x_studio_estatus"/></div>
+          </div>
+
+          <div class="card-body">
+            <table class="table table-borderless mb-0">
+              <tr>
+                <td class="text-muted" style="width: 40%;">Asegurado</td>
+                <td class="fw-semibold"><span t-field="record.x_studio_partner_id"/></td>
+              </tr>
+              <tr>
+                <td class="text-muted">Producto</td>
+                <td><span t-field="record.x_studio_producto_contratado"/></td>
+              </tr>
+              <tr>
+                <td class="text-muted">Aseguradora</td>
+                <td><span t-field="record.x_studio_aseguradora"/></td>
+              </tr>
+              <tr>
+                <td class="text-muted">Convenio</td>
+                <td><span t-field="record.x_studio_convenio"/></td>
+              </tr>
+              <tr>
+                <td class="text-muted">Vigencia</td>
+                <td>
+                  <span t-field="record.x_studio_vigencia_inicio"/> –
+                  <span t-field="record.x_studio_vigencia_fin"/>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="card-footer text-center small text-muted">
+            Documento emitido y verificado electrónicamente por SAFE Seguros.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </t>
+</t>v
